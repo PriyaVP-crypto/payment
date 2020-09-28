@@ -78,8 +78,10 @@ class deRegRequ(tornado.web.RequestHandler):
         # 100000001001 is the only working answer
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))
-        req = requests.get(end_url, headers=headers, auth=('ibmuser' , 'ibmuser'), verify=False)
+        print("dereg")
+        req = requests.get(end_url, headers=headers, auth=('ibmuser', 'ibmuser'), verify=False)
         json_out = req.json()
+        print("dereg req")
         self.render("static/genericresp.html",msg=json_out['CSDGRES']['CSRGRES']['MESSAGES'],cname=json_out['CSDGRES']['CSRGRES']['CUSTOMER_NAME'],cid=json_out['CSDGRES']['CSRGRES']['CUSTOMER_ID'],date=json_out['CSDGRES']['CSRGRES']['SYS_DATE'],time=json_out['CSDGRES']['CSRGRES']['SYS_TIME'],bloc="deregreq")
 
 class basicPayHandler(tornado.web.RequestHandler):
