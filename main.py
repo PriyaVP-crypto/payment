@@ -53,7 +53,7 @@ class basicRequestHandler(tornado.web.RequestHandler):
 
 class regRequ(tornado.web.RequestHandler):
     def post(self):
-        base_url = 'https://192.86.33.94:19443/cbs/cusreg?AcctNo='
+        base_url = 'https://192.86.33.94:19443/cbsrgdbbapi/cusreg?AcctNo='
         # 100000001001 is the only working answer
         #https://192.86.33.94:19443/cbs/cusreg?AcctNo=
         #https://192.86.33.94:19443/cbsrgdbbapi/cusreg?AcctNo=
@@ -73,7 +73,8 @@ class basicDeRequestHandler(tornado.web.RequestHandler):
 class deRegRequ(tornado.web.RequestHandler):
     def post(self):
         # base_url = 'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/custDreg?acctId='
-        base_url = 'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/custDreg?acctId='
+        base_url = 'https://192.86.33.94:19443/cbscs/cusdereg?AcctNo='
+        #'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/custDreg?acctId='
         # 100000001001 is the only working answer
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))
