@@ -72,14 +72,14 @@ class basicDeRequestHandler(tornado.web.RequestHandler):
 
 class deRegRequ(tornado.web.RequestHandler):
     def post(self):
-        # base_url = 'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/custDreg?acctId='
-        base_url = 'https://192.86.33.94:19443/cbscs/cusdereg?AcctNo='
+         base_url = 'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/custDreg?acctId='
+        #base_url = 'https://192.86.33.94:19443/cbscs/cusdereg?AcctNo='
         #'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/custDreg?acctId='
         # 100000001001 is the only working answer
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))
         print("dereg")
-        req = requests.get(end_url, headers=headers, auth=('ibmuser', 'ibmuser'), verify=False)
+        req = requests.get(end_url, headers=headers, auth=('ef748535-de65-4edb-a0fd-89f94ed994d3', ''), verify=False)
         json_out = req.json()
         print("dereg req")
         self.render("static/genericresp.html",msg=json_out['CSDGRES']['CSRGRES']['MESSAGES'],cname=json_out['CSDGRES']['CSRGRES']['CUSTOMER_NAME'],cid=json_out['CSDGRES']['CSRGRES']['CUSTOMER_ID'],date=json_out['CSDGRES']['CSRGRES']['SYS_DATE'],time=json_out['CSDGRES']['CSRGRES']['SYS_TIME'],bloc="deregreq")
