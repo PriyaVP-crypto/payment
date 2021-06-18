@@ -53,14 +53,14 @@ class basicRequestHandler(tornado.web.RequestHandler):
 
 class regRequ(tornado.web.RequestHandler):
     def post(self):
-        base_url = 'https://192.86.33.94:19443/cbsrgdbbapi/cusreg?AcctNo='
+        base_url = 'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/custDreg?acctId='
         # 100000001001 is the only working answer
         #https://192.86.33.94:19443/cbs/cusreg?AcctNo=
         #https://192.86.33.94:19443/cbsrgdbbapi/cusreg?AcctNo=
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))
         print("before")
-        req = requests.get(end_url, headers=headers, auth=('ibmuser', 'ibmuser'), verify=False)
+        req = requests.get(end_url, headers=headers, auth=('ef748535-de65-4edb-a0fd-89f94ed994d3', ''), verify=False)
         json_out = req.json()
         print("json")
         print(json_out)
@@ -91,11 +91,12 @@ class basicPayHandler(tornado.web.RequestHandler):
 class payRequ(tornado.web.RequestHandler):
     def post(self):
         # base_url  = 'https://192.86.33.94:19443/cuspymtauth/cuspay?debitamt='
-        base_url = 'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/pymntAuth?acctId='
+        #base_url = 'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/pymntAuth?acctId='
+        base_url =  'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/pymntAuth?acctId='
         # 100000001001   is the only working answer
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))+"&debitAmt="+str(self.get_body_argument("debit_amt"))
-        req = requests.get(end_url, headers=headers, auth=('46caf13c5c888717720f27575d6f1cae', '9c87996d65d8e9f1c7c59d7cad9cb02b'), verify=False)
+        req = requests.get(end_url, headers=headers, auth=('ef748535-de65-4edb-a0fd-89f94ed994d3', ''), verify=False)
         json_out = req.json()
         self.render("static/genericresp.html",msg=json_out['CSPYRES']['CSPYRES']['MESSAGES'],cname=json_out['CSPYRES']['CSPYRES']['CUSTOMER_NAME'],hbal=json_out['CSPYRES']['CSPYRES']['HOLD_BALANCE'],lbal=json_out['CSPYRES']['CSPYRES']['LEDGER_BL'],bal=json_out['CSPYRES']['CSPYRES']['AVAILABLE_BALANCE'],cid=json_out['CSPYRES']['CSPYRES']['CUSTOMER_ID'],damt=json_out['CSPYRES']['CSPYRES']['DEBIT_AMOUNT_RES'],tid=json_out['CSPYRES']['CSPYRES']['TRANSACTION_ID'],date=json_out['CSPYRES']['CSPYRES']['SYS_DATE'],time=json_out['CSPYRES']['CSPYRES']['SYS_TIME'],bloc="payauth")
 
@@ -106,11 +107,12 @@ class basicRevHandler(tornado.web.RequestHandler):
 class revRequ(tornado.web.RequestHandler):
     def post(self):
         # base_url = 'https://192.86.33.94:19443/cusdereg/AccountNo?acctno='
-        base_url = 'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/pymntRev?acctId='
+        #base_url = 'https://gateway.aipc1.cp4i-b2e73aa4eddf9dc566faa4f42ccdd306-0001.us-east.containers.appdomain.cloud/sachinsorg/sandbox/payments/pymntRev?acctId='
+        base_url = 'https://api.eu-gb.apiconnect.appdomain.cloud/m1ganeshtcscom1543928228162-dev/sb/payments/pymntRev?acctId='
         # 100000001001 is the only working answer
         headers = {'Content-Type': 'application/json'}
         end_url= base_url+str(self.get_body_argument("accnt"))+"&transId="+str(self.get_body_argument("trans"))+"&revAmt="+str(self.get_body_argument("debit_amt"))
-        req = requests.get(end_url, headers=headers, auth=('46caf13c5c888717720f27575d6f1cae', '9c87996d65d8e9f1c7c59d7cad9cb02b'), verify=False)
+        req = requests.get(end_url, headers=headers, auth=('ef748535-de65-4edb-a0fd-89f94ed994d3', ''), verify=False)
         json_out = req.json()
         self.render("static/genericresp.html",msg=json_out['CSREVRES']['CSREVRES']['MESSAGES'],cname=json_out['CSREVRES']['CSREVRES']['CUSTOMER_NAME'],hbal=json_out['CSREVRES']['CSREVRES']['HOLD_BALANCE'],lbal=json_out['CSREVRES']['CSREVRES']['LEDGER_BL'],bal=json_out['CSREVRES']['CSREVRES']['AVAILABLE_BALANCE'],cid=json_out['CSREVRES']['CSREVRES']['CUSTOMER_ID'],credamt=json_out['CSREVRES']['CSREVRES']['CREDIT_AMOUNT_RES'],tid=json_out['CSREVRES']['CSREVRES']['TRANSACTIONS_ID'],date=json_out['CSREVRES']['CSREVRES']['SYS_DATE'],time=json_out['CSREVRES']['CSREVRES']['SYS_TIME'],bloc="payrev")
 
