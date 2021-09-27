@@ -1,0 +1,43 @@
+Hi,
+
+
+Below I am listing out the coomands required to push and build application on IBm clooud and Openshift respectively.
+
+
+OPENSHIFT
+
+*) The created application is binded to the github repo during creation, i.e., when a commit is done openshift is able to access it.
+ hence no push is required all you need is to build the code and it automatically gets deployed.
+
+COMMANDS (oc tool)
+ oc login --token=fVc1qL1z5CLgt7pu6Hqc1VmbCpi1odB3PBRKJwYqgq0 --server=https://api.ca-central-1.starter.openshift-online.com:6443
+oc project payment-gateway
+ oc start-build pgw
+ oc status(optional)
+
+
+IBM CLOUD 
+
+*) Gitlab is the repo. Once commit is done, the repo needs to be cloned and then pushed to cloud.
+
+COMMANDS (cf cli tool)
+git clone https://gitlab.com/andrewmoses/ibm_coe_payment.git
+cd [local file name]
+cf api https://api.eu-gb.bluemix.net
+cf login
+cf push
+
+P.S: 
+git@gitlab.com:andrewmoses/ibm_coe_payment.git  is the ssh clone id if you prefer that way.
+
+
+
+TRY THIS!!
+
+git clone https://gitlab.com/andrewmoses/ibm_coe_payment
+cd [local directory]
+ibmcloud login    {username m1.ganesh@tcs.com    pws:Periya4th2eni}
+ibmcloud target --cf
+
+ibmcloud cf push
+

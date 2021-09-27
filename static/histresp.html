@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+   <!--Import Google Icon Font-->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+   <!-- Compiled and minified CSS -->
+
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+
+
+   <!--Let browser know website is optimized for mobile-->
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<style>
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+</style>
+
+
+
+</head>
+
+
+
+ <body>
+
+  <header>
+
+  <nav class="light-blue lighten-1" role="navigation">
+
+
+  <div class="nav-wrapper container">
+<a id="logo-container" href="homepage" class="brand-logo">Core Banking Solutions</a>
+
+    </div>
+
+
+  </nav>
+
+  </header>
+
+<main id="allthings" >
+
+<div style="height:70px"></div>
+
+<div class="container" >
+
+
+
+<!-- div and condition for dispalying transaction id.......only for payment -->
+
+
+	
+
+
+
+<!-- the div for date and time response which is displayed always irrespective of conditions -->
+
+
+<!-- inside container where conditional dispaly -->
+
+<!-- conditions for reg and dereg i.e. name and id displayed -->
+
+
+	
+
+
+<!-- conditions for payment auth i.e cname cid, lbal,hbal,bal,damt -->
+
+
+
+
+
+
+    <div class="container center">
+
+
+	    <table class="striped responsive-table " style="width:800px;">
+
+	        <thead>
+
+                <tr>
+
+        	        <th>Customer Name</th>
+                    <th>Message</th>
+                    <th>Customer ID</th>
+                    <th>Date</th>
+                    <th>TIme</th>
+                    <th>Transaction ID</th>
+                    <th>Debit Amount</th>
+                    <th>Account Number</th>
+                </tr>
+
+	            <tr></tr>
+
+            </thead>    
+
+
+            <tbody>
+              {% for record in array_record %}
+                <tr>
+
+                    <td>{{ record[0] }}</td>
+
+                    <td> {{ record[1] }}</td>
+                    <td> {{ record[3] }}</td>
+                    <td> {{ record[4] }}</td>
+                    <td> {{ record[5] }}</td>
+                    <td> {{ record[6] }}</td>
+                    <td> {{ record[7] }}</td>
+                    <td> {{ record[11] }}</td>
+                    
+
+               
+ 
+                </tr>
+                {% end %}
+ 
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+
+<!-- condition for payment reversal -->
+
+ 
+
+
+
+
+</main>
+
+<div style="height:170px"></div>
+
+
+
+
+<footer class="section light-blue lighten-1 white-text center">
+
+	<p class="flow-text">Core Banking Solutions &copy; 2019</p>
+</footer>
+  <!-- Compiled and minified JavaScript -->
+   <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript">
+   // document.getElementById("allthings")
+   $('#allthings').css('paddingBottom', $('#foot').height());
+  console.log($('#foot').height());
+</script>
+ </body>
+
+</html>
+

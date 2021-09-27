@@ -1,0 +1,31 @@
+{% extends "resp.html" %}
+
+{% block transid %}
+
+{% end %}
+
+{% block payrelated %}
+
+{% end %}
+
+{% block custname %}
+	{% if msg !='ACCOUNT DOES NOT EXIT WITH BANK' %}
+		<input disabled value="" id="disabled" type="text" class="validate" >
+
+
+		<label > Customer Name</label>
+
+
+	{% end %}
+{% end block %}
+
+{% block custid %}
+	{% if msg !='ACCOUNT DOES NOT EXIT WITH BANK' %}
+		<input disabled value="" id="disabled" type="text" class="validate" >
+
+
+		<label > Customer ID</label>
+
+
+	{% end %}
+{% end block %}
